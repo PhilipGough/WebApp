@@ -7,11 +7,18 @@
 /* Toggle Styles */
 
 #wrapper {
+    padding-top: 10px;
     padding-left: 0;
     -webkit-transition: all 0.5s ease;
     -moz-transition: all 0.5s ease;
     -o-transition: all 0.5s ease;
     transition: all 0.5s ease;
+}
+
+#title{
+     padding-top: 10px;
+     padding-left: 0;
+     color: #FFFFFF;
 }
 
 #wrapper.toggled {
@@ -23,7 +30,7 @@
     position: fixed;
     left: 250px;
     width: 0;
-    height: 100%;
+    height: 80%;
     margin-left: -250px;
     overflow-y: auto;
     background: #000;
@@ -52,7 +59,7 @@
 .sidebar-nav {
     position: absolute;
     top: 0;
-    width: 250px;
+    width: 200px;
     margin: 0;
     padding: 0;
     list-style: none;

@@ -6,10 +6,7 @@
                                            'data-turbolinks-track' => true %>                                     
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
-    <%= render 'layouts/shim' %>
-    <% if current_user.admin? %>
-    <%= render 'layouts/admin' %> 
-    <% end %>                                       
+    <%= render 'layouts/shim' %>                                     
   </head>
   <body>
   <%= render 'layouts/header' %>  
@@ -18,10 +15,10 @@
         <div class="alert alert-<%= message_type %>"><%= message %></div>
       <% end %>
       <%= yield %>
-      <% if !current_user.admin? %>
-      <%= render 'layouts/footer' %>
-      <% end %>
-      <%= debug(params) if Rails.env.development? %>
+      <%= debug(params) if Rails.env.development? %>   
     </div>
+     <div class="container">
+      <%= render 'layouts/footer' %>
+      </div> 
   </body>
 </html>

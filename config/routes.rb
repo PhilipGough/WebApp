@@ -1,18 +1,19 @@
 Rails.application.routes.draw do
   
-
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
+  resources :products
 
   root to: 'static_pages#home'
   match '/help',    to: 'static_pages#help' , via: 'get'
   match '/about',   to: 'static_pages#about', via: 'get'
   match '/contact', to: 'static_pages#contact', via: 'get'
+  match '/admin',   to: 'static_pages#admin', via: 'get'
   match '/signup',  to: 'users#new', via: 'get'
   match '/signin',  to: 'sessions#new', via: 'get'
   match '/signin',  to: 'sessions#create', via: 'post'
   match '/signout', to: 'sessions#destroy', via: :delete
-  match '/help',    to: 'static_pages#help' , via: 'get'
+  
 end
 
   # The priority is based upon order of creation: first created -> highest priority.

@@ -9,6 +9,7 @@
 #wrapper {
     padding-top: 10px;
     padding-left: 0;
+    padding-bottom: 5%;
     -webkit-transition: all 0.5s ease;
     -moz-transition: all 0.5s ease;
     -o-transition: all 0.5s ease;
@@ -18,7 +19,9 @@
 #title{
      padding-top: 10px;
      padding-left: 0;
+     padding-bottom: 0px;
      color: #FFFFFF;
+     text-decoration: underline;
 }
 
 #wrapper.toggled {
@@ -30,7 +33,7 @@
     position: fixed;
     left: 250px;
     width: 0;
-    height: 80%;
+    height: 72%;
     margin-left: -250px;
     overflow-y: auto;
     background: #000;
@@ -67,7 +70,7 @@
 
 .sidebar-nav li {
     text-indent: 20px;
-    line-height: 40px;
+    line-height: 35px;
 }
 
 .sidebar-nav li a {

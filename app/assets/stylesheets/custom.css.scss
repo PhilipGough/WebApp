@@ -1,6 +1,10 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+.well{
+    background: rgba(0, 0, 0, 0.1);
+}
+
 /* mixins, variables, etc. */
 
 $gray-medium-light: #eaeaea;

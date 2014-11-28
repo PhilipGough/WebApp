@@ -5,6 +5,10 @@ source 'https://rubygems.org'
 gem 'rails', '4.1.5'
 gem 'bootstrap-sass',       '3.2.0.0'
 gem 'bcrypt',               '3.1.7'
+gem 'aws-sdk'
+gem "paperclip", "~> 4.2"
+gem "figaro"
+
 # Use sqlite3 as the database for Active Record
 
 # Use SCSS for stylesheets
@@ -24,6 +28,7 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0',          group: :doc
+gem 'rack-cors', :require => 'rack/cors'
 
 
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring

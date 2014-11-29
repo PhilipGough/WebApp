@@ -14,4 +14,7 @@ class StaticPagesController < ApplicationController
   def admin
   end 
 
+  def no_access
+  end  
+
 end

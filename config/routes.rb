@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   match '/help',    to: 'static_pages#help' , via: 'get'
   match '/about',   to: 'static_pages#about', via: 'get'
   match '/contact', to: 'static_pages#contact', via: 'get'
+  match '/noaccess',to: 'static_pages#no_access', via: 'get'
   match '/admin',   to: 'users#admin', via: 'get'
   match '/signup',  to: 'users#new', via: 'get'
   match '/signin',  to: 'sessions#new', via: 'get'

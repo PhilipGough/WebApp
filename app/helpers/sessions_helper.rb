@@ -35,7 +35,7 @@ module SessionsHelper
 
   def is_admin?
     user = current_user
-    user.admin
+    user.admin?
   end
 
     # Logs out the current user.

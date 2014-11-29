@@ -1,4 +1,6 @@
 class ProductsController < ApplicationController
+  before_action :has_permissions, only: [:edit, :update, :destroy]
+
   def new
     @product = Product.new
   end
@@ -19,6 +21,7 @@ class ProductsController < ApplicationController
   end
 
   def edit
+    @product = Product.find(params[:id])
   end
 
   def destroy
@@ -29,6 +32,7 @@ class ProductsController < ApplicationController
   end
 
   def show
+    @product = Product.find(params[:id])
   end
 end
 
@@ -38,3 +42,12 @@ end
     params.require(:product).permit(:title, :description,
      :price,:avatar,:avatar_file_name,:quantity)
   end 
+
+
+    private
+      def has_permissions
+        unless is_admin?
+          flash[:danger] = "You do not have required permissions! "
+          redirect_to root_url
+        end
+      end

@@ -18,14 +18,14 @@
               <%= link_to product.title ,product %>
             </h3>
             <% if has_img?(product) %>
-            <%= image_tag product.avatar.url(:thumb) %>
+               <%= image_tag product.avatar.url(:thumb) %>
             <%else%>
-             <img alt="Icon" src="/images/na.png" />
+               <img alt="Icon" src="/images/na.png" />
             <% end %>
-             <% if current_user && current_user.admin? %>
-            <a href="#" class="btn btn-warning pull-right">Edit!</a>
+            <% if current_user && current_user.admin? %>
+               <%= link_to "Edit", edit_product_path(product.id), class: "btn btn-warning pull-right" %>
             <%else%>
-            <a href="#" class="btn btn-primary pull-right">Buy!</a>
+               <a href="#" class="btn btn-primary pull-right">Buy!</a>
             <% end %>
           </div>
            <ul class="list-group">
@@ -40,10 +40,6 @@
               <span class="badge alert-success"><%=product.quantity%></span>
               <%end%>
               Quantity in stock 
-            </li>
-            <li class="list-group-item list-group-item-warning">
-              <span class="badge">1</span>
-              Morbi leo risus
             </li>
           </ul>
         </div>

@@ -1,8 +1,0 @@
-<% provide(:title, "Admin Panel") %>
- <% if current_user && current_user.admin? %>
-    <%= render 'layouts/admin' %> 
-    <% else %>  
-    <%= render 'layouts/no_permission' %> 
-     <% end %>  
-
-

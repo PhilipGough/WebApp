@@ -39,7 +39,11 @@ def destroy
 end
 
 def index
-  @products = Product.all
+  if ! current_user.nil?
+    @products = Product.all
+  else
+    redirect_to noaccess_path
+  end  
 end
 
 def show

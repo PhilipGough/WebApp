@@ -8,8 +8,8 @@
 
 User.create!(name:  "Philip Gough",
              email: "philip.p.gough@gmail.com",
-             password:              "manutd123",
-             password_confirmation: "manutd123",
+             password:              "password",
+             password_confirmation: "password",
              admin: true)
 
 

@@ -1,14 +1,98 @@
-<div class="center jumbotron">
-  <h1>Welcome to the Sample App</h1>
 
-  <h2>
-    This is the home page for the
-    <a href="http://www.railstutorial.org/">Ruby on Rails Tutorial</a>
-    sample application.
-  </h2>
+<div id="carousel-example-generic" class="carousel slide" data-ride="carousel" data-interval="2000">
+  <!-- Indicators -->
+  <ol class="carousel-indicators">
+    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+</ol>
 
-  <%= link_to "Sign up now!", signup_path, class: "btn btn-lg btn-primary" %>
+<!-- Wrapper for slides -->
+<div class="carousel-inner">
+    <div class="item active">
+      <%= image_tag("home1.jpg") %>
+      <div class="carousel-caption">
+          <h1>Sign Up Now!</h1>
+          <%= link_to "Sign up now!", signup_path, class: "btn btn-lg btn-primary" %>
+      </div>
+  </div>
+  <div class="item">
+      <%= image_tag("home2.jpg") %>
+      <div class="carousel-caption">
+          <h1 style="color:black">Browse our catalogue</h1>
+          <%= link_to "Log in!", signin_path, class: "btn btn-lg btn-info" %>
+      </div>
+  </div>
 </div>
 
-<%= link_to image_tag("rails.png", alt: "Rails logo"),
-            'http://rubyonrails.org/' %>
+<!-- Controls -->
+<a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left"></span>
+</a>
+<a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right"></span>
+</a>
+</div> <!-- Carousel -->
+
+
+
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">
+            Welcome to My E-Commerce Prototype App!
+        </h1>
+    </div>
+    <div class="col-md-4">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4>About the App</h4>
+            </div>
+            <div class="panel-body" style="margin:10px">
+                <p>This serves as a prototype e-commerce business application. It allows an administrator to log on and add products which are displayed in the catalogue. Users must log in and authenticate in order to use the system. It provides a different front end for both an administrator (business owner), and an online shopper. Provides specific CRUD functionality on the models, depending on the type of logged in user, in a dynamic setting.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <h4></i>About the build</h4>
+            </div>
+            <div class="panel-body" style="margin:10px">
+                <p>The application was built for a college project and employs some of the following features</p>
+                <ul class="list-group">
+                    <li class="list-group-item disabled">Built using the Ruby On Rails framework</li>
+                    <li class="list-group-item ">Styled using Bootstrap 3 and some JavaScript</li>
+                    <li class="list-group-item disabled">Shopping cart implemented using a Redis cache hosted on an EC2 instance</li>
+                    <li class="list-group-item ">Product images are uploaded and retrieved from an S3 Bucket</li>
+                    <li class="list-group-item disabled">Image resizing is a feature of the app itself</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4>About the author!</h4>
+        </div>
+         <div class="panel-body" style="margin:10px">
+          <ul class="list-group" style="margin:10px">
+            <li class="list-group-item">
+              <a href="https://github.com/PhilipGough" class="btn btn-default btn-lg"><i class="fa fa-github fa-fw"></i> <span class="network-name">Github</span></a>
+            </li>
+            <li class="list-group-item">
+              <a href="https://ie.linkedin.com/pub/philip-gough/5a/9b4/844" class="btn btn-default btn-lg"><i class="fa fa-linkedin fa-fw"></i> <span class="network-name">Linkedin</span></a>
+            </li>
+              <li class="list-group-item">
+              <a href="https://twitter.com/philipgough2" class="btn btn-default btn-lg"><i class="fa fa-twitter fa-fw" style="padding:5px"></i> <span class="network-name">Twitter</span></a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+
+<script>
+$('.carousel').carousel({
+    interval: 2000
+
+})
+</script>

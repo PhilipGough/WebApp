@@ -9,14 +9,14 @@
   into Bootstrap buttons
   <a class="btn">Browse</a>
 
-*/
-(function($) {
+  */
+  (function($) {
 
-$.fn.bootstrapFileInput = function() {
+    $.fn.bootstrapFileInput = function() {
 
-  this.each(function(i,elem){
+      this.each(function(i,elem){
 
-    var $elem = $(elem);
+        var $elem = $(elem);
 
     // Maybe some fields don't need to be standardized.
     if (typeof $elem.attr('data-bfi-disabled') != 'undefined') {
@@ -50,9 +50,9 @@ $.fn.bootstrapFileInput = function() {
     $('.file-input-wrapper').mousemove(function(cursor) {
 
       var input, wrapper,
-        wrapperX, wrapperY,
-        inputWidth, inputHeight,
-        cursorX, cursorY;
+      wrapperX, wrapperY,
+      inputWidth, inputHeight,
+      cursorX, cursorY;
 
       // This wrapper element (the button surround this file input)
       wrapper = $(this);
@@ -83,10 +83,10 @@ $.fn.bootstrapFileInput = function() {
       });
     });
 
-    $('body').on('change', '.file-input-wrapper input[type=file]', function(){
+$('body').on('change', '.file-input-wrapper input[type=file]', function(){
 
-      var fileName;
-      fileName = $(this).val();
+  var fileName;
+  fileName = $(this).val();
 
       // Remove any previous file names
       $(this).parent().next('.file-input-name').remove();
@@ -113,17 +113,17 @@ $.fn.bootstrapFileInput = function() {
       }
     });
 
-  });
+});
 
 };
 
 // Add the styles before the first stylesheet
 // This ensures they can be easily overridden with developer styles
 var cssHtml = '<style>'+
-  '.file-input-wrapper { overflow: hidden; position: relative; cursor: pointer; z-index: 1; }'+
-  '.file-input-wrapper input[type=file], .file-input-wrapper input[type=file]:focus, .file-input-wrapper input[type=file]:hover { position: absolute; top: 0; left: 0; cursor: pointer; opacity: 0; filter: alpha(opacity=0); z-index: 99; outline: 0; }'+
-  '.file-input-name { margin-left: 8px; }'+
-  '</style>';
+'.file-input-wrapper { overflow: hidden; position: relative; cursor: pointer; z-index: 1; }'+
+'.file-input-wrapper input[type=file], .file-input-wrapper input[type=file]:focus, .file-input-wrapper input[type=file]:hover { position: absolute; top: 0; left: 0; cursor: pointer; opacity: 0; filter: alpha(opacity=0); z-index: 99; outline: 0; }'+
+'.file-input-name { margin-left: 8px; }'+
+'</style>';
 $('link[rel=stylesheet]').eq(0).before(cssHtml);
 
 })(jQuery);

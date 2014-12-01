@@ -17,6 +17,6 @@
 
 # Ignore Spring files.
 /spring/*.pid
-/config/aws.yml
+/config/env.yml
 
 

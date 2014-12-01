@@ -6,6 +6,7 @@ class UsersController < ApplicationController
     @users = User.all # getting all the users!
   end
 
+
   def new
     @user = User.new
   end
@@ -26,9 +27,11 @@ class UsersController < ApplicationController
     end
   end
 
+
   def edit
     @user = User.find(params[:id])
   end
+
 
   def update
     @user = User.find(params[:id])
@@ -39,7 +42,10 @@ class UsersController < ApplicationController
       render 'edit'
     end
   end
+  
+  def admin
 
+  end
 
   private
 
@@ -63,7 +69,4 @@ class UsersController < ApplicationController
     redirect_to(root_url) unless current_user?(@user)
   end
 
-  def admin
-
-  end
 end

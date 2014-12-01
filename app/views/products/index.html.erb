@@ -18,19 +18,28 @@
               <%= link_to product.title ,product %>
             </h3>
             <% if has_img?(product) %>
-               <%= link_to (image_tag product.avatar.url(:thumb)) , product %>
+            <%= link_to (image_tag product.avatar.url(:thumb)) , product %>
             <%else%>
-               <img alt="Icon" src="/images/na.png" />
+            <img alt="Icon" src="/images/na.png" />
             <% end %>
             <% if current_user && current_user.admin? %>
             <%= link_to "Delete", product_path(product.id),method: :delete, data: { confirm: 'Are you certain you want to delete this?' }, class: "btn btn-danger pull-right" %>
-               <%= link_to "Edit", edit_product_path(product.id), class: "btn btn-warning pull-right" %>
+            <%= link_to "Edit", edit_product_path(product.id), class: "btn btn-warning pull-right" %>
 
             <%else%>
-               <a href="#" class="btn btn-primary pull-right">Add to cart!</a>
+            <% if not in_stock?(product) %>
+            <a href="#" class="btn disabled btn-info pull-right">Out of stock!</a>
+
+            <% elsif not $redis.sismember "cart#{current_user.id}", product.id %>
+            <%= link_to "Add to cart!", add_to_cart_path(product.id),method: :put, class: "btn btn-success active pull-right" %>
+
+            <%else%>
+            <%= link_to "Remove from cart!", remove_from_cart_path(product.id),method: :put, class: "btn btn-danger active pull-right"  %>
+
+            <%end%>
             <% end %>
           </div>
-           <ul class="list-group">
+          <ul class="list-group">
             <li class="list-group-item list-group-item-warning">
               <span class="badge alert-info"><%=product.price%></span>
               Price
@@ -45,8 +54,11 @@
             </li>
           </ul>
         </div>
-      <% end %>
+        <% end %>
+      </div>
     </div>
-  </div>
+
+
+
 
 

@@ -8,6 +8,8 @@ gem 'bcrypt',               '3.1.7'
 gem 'aws-sdk'
 gem "paperclip", "~> 4.2"
 gem "figaro"
+gem 'redis', '~> 3.0.1'
+gem 'hiredis', '~> 0.4.5'
 
 # Use sqlite3 as the database for Active Record
 

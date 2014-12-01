@@ -6,6 +6,10 @@ module ProductsHelper
 
   def low_stock?(product)
       product.quantity <= 6
+  end 
+
+   def in_stock?(product)
+      product.quantity > 0
   end  
 
 end

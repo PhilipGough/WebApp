@@ -1,8 +1,14 @@
 Rails.application.routes.draw do
   
+
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
   resources :products
+
+  resource :cart, only: [:show] do
+  put 'add/:product_id', to: 'carts#add', as: :add_to
+  put 'remove/:product_id', to: 'carts#remove', as: :remove_from
+end
 
   root to: 'static_pages#home'
   match '/help',    to: 'static_pages#help' , via: 'get'

@@ -12,7 +12,14 @@ class Product < ActiveRecord::Base
   validates :title,  presence: true, length: { maximum: 50 }
   validates :description,  presence: true, length: { maximum: 150 }
   validates :price,  presence: true , numericality: { greater_than_or_equal_to: 1 }
-  validates :quantity,  presence: true , numericality: { greater_than_or_equal_to: 1 }
+  validates :quantity,  presence: true , numericality: { greater_than_or_equal_to: 0 }
 end
 
 
+def cart_action(current_user_id)
+  if $redis.sismember "cart#{current_user_id}", id
+    "Remove from"
+  else
+    "Add to"
+  end
+end

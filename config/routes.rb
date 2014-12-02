@@ -1,9 +1,18 @@
 Rails.application.routes.draw do
   
 
-  resources :users
+  resources :users 
+  match '/admin',   to: 'users#admin', via: 'get'
+  match '/control_panel', to: 'users#customer', via: 'get'
+  match '/signup',  to: 'users#new', via: 'get'
+
   resources :sessions, only: [:new, :create, :destroy]
+  match '/signin',  to: 'sessions#new', via: 'get'
+  match '/signin',  to: 'sessions#create', via: 'post'
+  match '/signout', to: 'sessions#destroy', via: :delete
+
   resources :products
+  #put '/search', to: 'products#search', via: 'get'
 
   resource :cart, only: [:show] do
   put 'add/:product_id', to: 'carts#add', as: :add_to
@@ -15,11 +24,8 @@ end
   match '/about',   to: 'static_pages#about', via: 'get'
   match '/contact', to: 'static_pages#contact', via: 'get'
   match '/noaccess',to: 'static_pages#no_access', via: 'get'
-  match '/admin',   to: 'users#admin', via: 'get'
-  match '/signup',  to: 'users#new', via: 'get'
-  match '/signin',  to: 'sessions#new', via: 'get'
-  match '/signin',  to: 'sessions#create', via: 'post'
-  match '/signout', to: 'sessions#destroy', via: :delete
+
+ 
   
 end
 

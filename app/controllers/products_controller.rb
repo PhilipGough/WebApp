@@ -8,47 +8,56 @@ class ProductsController < ApplicationController
   def create
     @product = Product.new(product_params)
     if @product.save
-      flash[:success] = "Product added"
-      redirect_to root_path
+        flash[:success] = "Product added"
+        redirect_to root_path
     else
-     flash[:danger] = "Missing Details"
-     redirect_to  :action => :new
-   end
+        flash[:danger] = "Missing Details"
+        redirect_to  :action => :new
+    end
+  end
 
- end
+  def update
+    @product = Product.find(params[:id])
+    if @product.update_attributes(product_params)
+        flash[:success] = "Product updated"
+        redirect_to products_path
+    else
+      render 'edit'
+    end    
+  end
 
- def update
-  @product = Product.find(params[:id])
-  if @product.update_attributes(product_params)
-    flash[:success] = "Product updated"
+  def edit
+    @product = Product.find(params[:id])
+  end
+
+
+  def destroy
+    Product.find(params[:id]).destroy
+    flash[:success] = "This product has been deleted"
     redirect_to products_path
-  else
-    render 'edit'
-  end    
-end
-
-def edit
-  @product = Product.find(params[:id])
-end
-
-
-def destroy
-  Product.find(params[:id]).destroy
-  flash[:success] = "This product has been deleted"
-  redirect_to products_path
-end
+  end
 
 def index
   if ! current_user.nil?
-    @products = Product.all
+      if params[:search]
+          @products = Product.search(params[:search])
+          if @products.empty?
+              flash[:danger] = "No products match your search! "
+              redirect_to control_panel_path
+          else
+              return @products   
+          end  
+      else
+          @products = Product.all
+      end 
   else
-    redirect_to noaccess_path
+      redirect_to noaccess_path
   end  
 end
 
+
 def show
   @product = Product.find(params[:id])
-end
 end
 
 private
@@ -65,4 +74,6 @@ def has_permissions
     flash[:danger] = "You do not have required permissions! "
     redirect_to  noaccess_path
   end
+end
+
 end

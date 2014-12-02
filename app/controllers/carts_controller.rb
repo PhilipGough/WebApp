@@ -17,18 +17,19 @@ class CartsController < ApplicationController
 
   def add
     $redis.sadd current_user_cart, params[:product_id]
-    render json: current_user.cart_count, status: 200
+    redirect_to products_path
   end
 
   def remove
     $redis.srem current_user_cart, params[:product_id]
-    render json: current_user.cart_count, status: 200
+    redirect_to products_path
   end
 
   private
 
   def current_user_cart
     "cart#{current_user.id}"
-  end  
+  end
 
+  
 end

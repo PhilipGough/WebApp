@@ -2,36 +2,35 @@
   <div class="container">
     <%= link_to "sample app", root_path, id: "logo" %>
     <nav>
-      <ul class="nav navbar-nav pull-right">
-        <li><%= link_to "Home", root_path %></li>
-        <li><%= link_to "Help", help_path %></li>
+    <ul class="nav navbar-nav pull-right">
+      <li><%= link_to "Home", root_path %></li>
         <% if logged_in? %>
+          <% if not is_admin? %>
             <li>
-              <% if not is_admin? %>
-                <%= link_to cart_path do%>
-                <li class=""></i>
-                  My Cart
-                  (<span class="cart-count"><%=current_user.cart_count%></span>)
-                  <span class="glyphicon glyphicon-shopping-cart"></span>
-              <%end%>
-              <%end%>
-              </li>
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              Account <b class="caret"></b>
-            </a>
-            <ul class="dropdown-menu">
-              <li><%= link_to "Profile", current_user %></li>
-              <li><%= link_to "Settings", edit_user_path(current_user) %></li><li class="divider"></li>
-              <li>
-                <%= link_to "Log out", signout_path, method: "delete" %>
-              </li>
-            </ul>
+                <%= link_to cart_path do%>My Cart
+                (<span class="cart-count"><%=current_user.cart_count%></span>)
+                <span class="glyphicon glyphicon-shopping-cart"></span>
+          <%end%>
+            </li>
+            <li><%= link_to "User panel", control_panel_path %></li>
+        
+      <%end%>
+          
+     <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+        Account <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+          <li><%= link_to "Profile", current_user %></li>
+          <li><%= link_to "Settings", edit_user_path(current_user) %></li><li class="divider"></li>
+          <li>
+            <%= link_to "Log out", signout_path, method: "delete" %>
           </li>
-        <% else %>
-          <li><%= link_to "Log in", signin_path %></li>
-        <% end %>
-      </ul>
-    </nav>
-  </div>
+        </ul>
+      </li>
+    <% else %>
+      <li><%= link_to "Log in", signin_path %></li>
+    <% end %>
+  </ul>
+</nav>
+</div>
 </header>

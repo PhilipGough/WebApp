@@ -21,4 +21,8 @@ def current_user_cart_total
   "carttotal#{current_user.id}"
 end 
 
+def update_cart_count
+    render json: current_user.cart_count, status: 200
+end 
+
 end

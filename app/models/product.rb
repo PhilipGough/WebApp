@@ -13,6 +13,12 @@ class Product < ActiveRecord::Base
   validates :description,  presence: true, length: { maximum: 150 }
   validates :price,  presence: true , numericality: { greater_than_or_equal_to: 1 }
   validates :quantity,  presence: true , numericality: { greater_than_or_equal_to: 0 }
+
+
+def self.search(search)
+  
+   where("title like ? OR description LIKE ?" , "%#{search}%",  "%#{search}%") 
+
 end
 
 
@@ -22,4 +28,6 @@ def cart_action(current_user_id)
   else
     "Add to"
   end
+end
+
 end

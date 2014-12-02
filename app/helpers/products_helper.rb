@@ -1,6 +1,6 @@
 module ProductsHelper
 
-    def has_img?(product)
+  def has_img?(product)
       product.avatar_file_name?
   end
 
@@ -11,5 +11,6 @@ module ProductsHelper
   def in_stock?(product)
       product.quantity > 0
   end  
+
 
 end

@@ -5,7 +5,7 @@ module ProductsHelper
   end
 
   def low_stock?(product)
-      product.quantity <= 6
+      product.quantity <= 5
   end 
 
   def in_stock?(product)

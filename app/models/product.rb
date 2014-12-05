@@ -21,6 +21,12 @@ def self.search(search)
 
 end
 
+def item_sold
+   # binding.pry
+    self.quantity = (self.quantity - 1 )
+    self.save
+end  
+
 
 def cart_action(current_user_id)
   if $redis.sismember "cart#{current_user_id}", id

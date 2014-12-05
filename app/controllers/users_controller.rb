@@ -48,7 +48,7 @@ class UsersController < ApplicationController
   end
 
   def customer
-     
+   
   end
 
   private

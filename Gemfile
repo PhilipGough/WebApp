@@ -11,6 +11,7 @@ gem "figaro"
 gem 'redis', '~> 3.0.1'
 gem 'hiredis', '~> 0.4.5'
 gem "font-awesome-rails"
+gem 'country_select', github: 'stefanpenner/country_select'
 
 # Use sqlite3 as the database for Active Record
 
@@ -31,8 +32,8 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0',          group: :doc
-gem 'rack-cors', :require => 'rack/cors'
-
+gem 'pry'
+gem 'pry-byebug'
 
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
 group :development, :test do

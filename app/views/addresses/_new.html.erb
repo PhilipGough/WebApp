@@ -1,0 +1,20 @@
+    <div class="well">
+      <h3>
+        Create a new address
+      </h3>
+        <%= form_for(@address) do |f| %>
+        <%= f.label :full_name %>
+        <%= f.text_field :fullname, class: 'form-control' %>
+        <%= f.label :address_line_one %>
+        <%= f.text_field :lineone, class: 'form-control' %>
+        <%= f.label :address_line_two %>
+        <%= f.text_field :linetwo, class: 'form-control' %>
+        <%= f.label :city %>
+        <%= f.text_field :city, class: 'form-control' %>
+        <%= f.label :country %>
+        <%= f.text_field :country, class: 'form-control' %>
+        <%= f.label :phone %>
+        <%= f.text_field :phone, class: 'form-control' %>
+        <%= f.submit "Add address", class: "btn btn-primary" %>
+<% end %>
+    </div>

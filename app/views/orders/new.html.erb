@@ -1,0 +1,77 @@
+    <div class="row">
+      <div class="col-md-3">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">
+              Shipping Address
+            </h3>
+          </div>
+          <div class="panel-body" style="padding:10px" "border-right:1px solid #ccc">
+            <p><%=simple_format(@shipping.to_s)%></p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">
+              Billing Address
+            </h3>
+          </div>
+          <div class="panel-body" style="padding:10px" "border-right:1px solid #ccc">
+                <p><%=simple_format(@billing.to_s)%></p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">
+              Products
+            </h3>
+          </div>
+          <div class="panel-body" style="padding:10px" "border-right:1px solid #ccc">
+            <ul class="list-group">
+                <% @products.each do |product| %>
+              <li class="list-group-item">
+                  <% if has_img?(product) %>
+                <%= (image_tag product.avatar.url(:thumb)) %>
+              <%else%>
+                <img alt="Icon" src="/images/na.png" />
+              <% end %>
+              <%= product.title %>
+             <%end%>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">
+              Order Details
+            </h3>
+          </div>
+          <div class="panel-body" style="padding:10px" "border-right:1px solid #ccc">
+             <ul class="list-group">
+              <li class="list-group-item">
+                <span class="badge "><%=cart_val %></span>
+                Cost of items:
+              </li>
+              <li class="list-group-item">
+                <span class="badge alert-info"><%=shipping_cost %></span>
+                Shipping cost:
+              </li>
+              <hr></hr>
+              <li class="list-group-item">
+                <span class="badge alert-success"><%=order_total %></span>
+                Total:
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  <%= form_for(@order) do |f| %>
+  <%= f.submit "Confirm order",class: "btn btn-sm btn-success btn pull-right" %>
+  <% end %>

@@ -1,73 +1,38 @@
 
 <% reset_cart %>
-<div class="jumbotron jumbatron-custom" style="background-size: 100%;">
-   <h1>
-    Your cart!
-</h1>
-<table class="table table-striped">
-    <thead>
-      <tr>
-        <th>
-          Image
-      </th>
-      <th>
-          Product
-      </th>
-      <th>
-          Price
-      </th>
-      <th>
-        Total
-    </th>
-    <th>
+    <div class="jumbotron jumbatron-custom" style="background-size: 100%;">
+        <h1>Your cart!</h1>
+        <table class="table table-striped">
+          <thead>
+            <tr><th>Image</th>
+                <th>Product</th>
+                <th>Price</th>
+                <th>Total</th><th></th>
+            </tr>
+          </thead>
+          <% @products.each do |product| %>
+          <tbody>
+            <tr>
+            <td>
+              <% if has_img?(product) %>
+                <%= (image_tag product.avatar.url(:thumb)) %>
+              <%else%>
+                <img alt="Icon" src="/images/na.png" />
+              <% end %>
+            </td>
+          <td><%= product.title%></td>
+          <td><%=product.price %></td>
+          <td><%= cart_cost (product.price)%></td>
+          <td><%= link_to "Remove from cart!", remove_from_cart_path(product.id),method: :put, 
+                    class: "btn btn-sm btn-danger active"  %></td>
+            </tr>
+          </tbody>
+          <%end%>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td><%= cart_total%></td>
+          <td><%= link_to "Checkout!", shipping_path, class: "btn btn-lg btn-success"%></td>
 
-    </th>
-</tr>
-</thead>
-<% @products.each do |product| %>
-<tbody>
-  <tr>
-   <td>
-    <% if has_img?(product) %>
-    <%= (image_tag product.avatar.url(:thumb)) %>
-    <%else%>
-    <img alt="Icon" src="/images/na.png" />
-    <% end %>
-</td>
-<td>
-   <%= product.title%>
-</td>
-<td>
-   <%=  product.price %>
-</td>
-
-<td> 
-    <%= cart_cost (product.price)%>
-</td>
-<td>
-  <%= link_to "Remove from cart!", remove_from_cart_path(product.id),method: :put, class: "btn btn-sm btn-danger active"  %>
-</td>
-</tr>
-</tbody>
-<%end%>
-<td>
-
-</td>
-<td>
-  
-</td>
-<td>
-  
-</td>
-
-<td> 
-    <%= cart_total%>
-</td>
-<td>
-  <button type="submit" class="btn btn-lg btn-success">  Checkout!
-    </button>
-</td>
-
-</table>
-</div>
-</div>
+        </table>
+  </div>

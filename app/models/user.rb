@@ -1,4 +1,8 @@
 class User < ActiveRecord::Base
+
+   has_many :addresses, dependent: :destroy
+   has_many :orders
+
    before_save { email.downcase! }
    validates :name,  presence: true, length: { maximum: 50 }
    VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
@@ -19,6 +23,11 @@ end
 
 def cart_count
     $redis.scard "cart#{id}"
-end   
+end 
+
+
+def current_user_cart
+    "cart#{current_user.id}"
+end  
 
 end

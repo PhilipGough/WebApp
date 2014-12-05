@@ -1,0 +1,41 @@
+  <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">
+          Select a billing address
+        </h3>
+      </div>
+      <div class="panel-body" style="padding:10px" "border-right:1px solid #ccc">
+        <div class="row">
+           <% @saved_add.each do |add| %>
+          <div class="col-md-3" style="border-right:1px solid #ccc">
+            <p><%=simple_format(add.to_s)%></p>
+              <div class="btn-group">
+                <%= f.submit "Select", class: "btn btn-primary" %>
+                <a href="#" class="btn btn-info">Button 2</a>
+                <a href="#" class="btn btn-danger">Button 3</a>
+        </div>
+          </div>
+          <%end%>
+      </div>
+    </div>
+    <hr>
+    <div class="well">
+      <h3>
+        Create a new address
+      </h3>
+        <%= form_for(@address) do |f| %>
+        <%= f.label :full_name %>
+        <%= f.text_field :fullname, class: 'form-control' %>
+        <%= f.label :address_line_one %>
+        <%= f.text_field :lineone, class: 'form-control' %>
+        <%= f.label :address_line_two %>
+        <%= f.text_field :linetwo, class: 'form-control' %>
+        <%= f.label :city %>
+        <%= f.text_field :city, class: 'form-control' %>
+        <%= f.label :country %>
+        <%= f.text_field :country, class: 'form-control' %>
+        <%= f.label :phone %>
+        <%= f.text_field :phone, class: 'form-control' %>
+        <%= f.submit "Add address", class: "btn btn-primary" %>
+<% end %>
+    </div>

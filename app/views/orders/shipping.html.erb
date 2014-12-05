@@ -1,0 +1,23 @@
+  <div class="panel panel-info">
+      <div class="panel-heading">
+        <h3 class="panel-title">
+          Select a shipping address
+        </h3>
+      </div>
+      <div class="panel-body" style="padding:10px" "border-right:1px solid #ccc">
+        <div class="row">
+           <% @saved_add.each do |add| %>
+          <div class="col-md-3" style="border-right:1px solid #ccc">
+            <p><%=simple_format(add.to_s)%></p>
+              <div class="btn-group">
+                 <%= link_to "Select!",{:controller => "orders", :action => "billing",
+                  :name => "shipping_address" ,:value => add.id},method: :get, class: "btn btn-info active" %>
+                <a href="#" class="btn btn-info">Button 2</a>
+                <a href="#" class="btn btn-danger">Button 3</a>
+        </div>
+          </div>
+          <%end%>
+      </div>
+    </div>
+    <hr>
+<%= render "addresses/new" %>

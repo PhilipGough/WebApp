@@ -1,3 +1,6 @@
+<% provide(:title, "Edit address") %>
+<h1>Update your address</h1>
+
     <div class="well">
       <h3>
         Create a new address
@@ -15,6 +18,6 @@
         <%= f.country_select :country, {priority: %w(IRE UK), prompt: 'Select Country'},:class=>"form-control" %>
         <%= f.label :phone %>
         <%= f.text_field :phone, class: 'form-control' %>
-        <%= f.submit "Add address", class: "btn btn-primary" %>
+        <%= f.submit "Save changes", class: "btn btn-primary" %>
 <% end %>
     </div>

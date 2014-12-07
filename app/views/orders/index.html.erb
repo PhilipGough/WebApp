@@ -1,0 +1,70 @@
+<% provide(:title, "Orders") %>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-3 col-md-3">
+        <% if current_user.admin? %>
+            <%= render 'layouts/admin' %> 
+        <%else%>
+            <%= render 'layouts/customer' %> 
+        <%end%>
+    </div>
+    <div class="col-sm-9 col-md-9">
+        <h2>Your Orders</h2>
+        <% @orders.each do |order| %>
+         <div class="panel panel-default">
+        <div class="panel-heading">
+          <div class="row">
+            <div class="col-md-3">
+                <h6>Order placed</h6>
+                <small><%= order.created_at %></small>
+            </div>
+            <div class="col-md-3">
+                 <h6>Total Cost</h6>
+                <small>€<%= order.total %></small>
+            </div>
+            <div class="col-md-3">
+                 <h6>Shipped to</h6>
+                 <% @address = Address.find_by_id(order.shipping_address_id) %>
+                 <% if @address.nil?%>
+                    <small>Name unavailable</small>
+                 <%else%> 
+                    <small><%=link_to "#{@address.fullname}",@address%></small>
+                 <%end%>    
+            </div>
+            <div class="col-md-3">
+                <h6>Order ref#<%= order.id %></h6>
+                
+            </div>
+          </div>
+        </div>
+        <div class="panel-body"style="padding:10px" >
+             <% order.products.each do |product| %>
+             <div class="row">
+                <div class="col-md-3">
+                    <%= link_to (image_tag product.avatar.url(:thumb)) , product %>
+                </div>
+                <div class="col-md-3">
+                </div>
+                <div class="col-md-3">
+                </div>
+                <div class="col-md-3">
+                    <%= link_to "#{product.title}", product %>
+                </div>
+            </div>
+            <hr></hr>
+            <%end%>
+             <% if order.shipped %>
+                <span class="label label-success">Shipped</span>
+             <%else%>
+                <span class="label label-danger">To be shipped</span>
+                 <%= link_to "Mark as shipped", {:controller => "orders", :action => "update", :id => order.id},method: :put, class: "btn btn-success btn-sm pull-right"%> 
+
+             
+             <%end%>
+        </div>
+      </div>
+      <%end%>
+        
+    </div>
+ </div>
+</div>

@@ -25,17 +25,6 @@
 
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td>
-                                        <span class="glyphicon glyphicon-file text-info"></span><a href="http://www.jquery2dotnet.com">Newsletters</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <span class="glyphicon glyphicon-comment text-success"></span><a href="http://www.jquery2dotnet.com">Comments</a>
-                                        <span class="badge">42</span>
-                                    </td>
-                                </tr>
                             </table>
                         </div>
                     </div>
@@ -44,7 +33,7 @@
                     <div class="panel-heading">
                         <h4 class="panel-title">
                             <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo"><span class="glyphicon glyphicon-th">
-                            </span>Modules</a>
+                            </span>Orders</a>
                         </h4>
                     </div>
                     <div id="collapseTwo" class="panel-collapse collapse">
@@ -52,22 +41,17 @@
                             <table class="table">
                                 <tr>
                                     <td>
-                                        <a href="http://www.jquery2dotnet.com">Orders</a> <span class="label label-success">$ 320</span>
+                                    <%= link_to "All Orders", {:controller => "orders", :action => "index", :name => "admin" }%> 
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>
-                                        <a href="http://www.jquery2dotnet.com">Invoices</a>
+                                        <%= link_to "Unshipped Orders", {:controller => "orders", :action => "index", :name => "unshipped" }%> 
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>
-                                        <a href="http://www.jquery2dotnet.com">Shipments</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <a href="http://www.jquery2dotnet.com">Tex</a>
+                                        <%= link_to "Previous week orders", {:controller => "orders", :action => "index", :name => "weekly" }%> 
                                     </td>
                                 </tr>
                             </table>
@@ -84,25 +68,25 @@
                     <div id="collapseThree" class="panel-collapse collapse">
                         <div class="panel-body">
                             <table class="table">
+                                 <tr>
+                                    <td>
+                                        <li><%= link_to "Profile",  current_user %></li>
+                                    </td>
+                                </tr>
+                                 <tr>
+                                    <td>
+                                        <li><%= link_to "Profile Settings",   edit_user_path(current_user) %></li>
+                                    </td>
+                                </tr>
+
                                 <tr>
                                     <td>
                                         <li><%= link_to "View all users",   users_path %></li>
                                     </td>
                                 </tr>
-                                <tr>
+                                   <tr>
                                     <td>
-                                        <a href="http://www.jquery2dotnet.com">Notifications</a> <span class="label label-info">5</span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <a href="http://www.jquery2dotnet.com">Import/Export</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <span class="glyphicon glyphicon-trash text-danger"></span><a href="http://www.jquery2dotnet.com" class="text-danger">
-                                        Delete Account</a>
+                                        <%= link_to "Log out", signout_path, method: "delete" %>
                                     </td>
                                 </tr>
                             </table>

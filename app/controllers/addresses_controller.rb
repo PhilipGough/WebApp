@@ -1,4 +1,5 @@
 class AddressesController < ApplicationController
+  before_action :logged_in_user, only: [:create,:edit, :update,:destroy]
 
  def edit
     @address = Address.find(params[:id])
@@ -31,16 +32,43 @@ class AddressesController < ApplicationController
     end
   end 
 
+  def index
+    if logged_in?
+      @addresses = current_user.addresses
+    else
+      flash[:danger] = "You must log in to view your saved addresses" 
+      redirect_to noaccess_path
+    end   
+  end  
+
+
+  def show
+    if logged_in?
+      @address = Address.find(params[:id])
+    else
+      flash[:danger] = "You do not have permission to access this content" 
+      redirect_to noaccess_path
+    end     
+  end 
+
 
    def destroy
     Address.find(params[:id]).destroy
     flash[:success] = "This Address has been deleted"
-    redirect_to cart_path
+    redirect_to addresses_path
   end
 
     private
       def address_params
         params.require(:address).permit(:fullname, :lineone, :linetwo,
             :city, :country , :phone)
-      end   
+      end 
+
+    private 
+     def logged_in_user
+        if not logged_in?
+            flash[:danger] = "You do not have permission to access this content" 
+            redirect_to noaccess_path
+        end    
+    end   
 end

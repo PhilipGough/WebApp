@@ -1,0 +1,23 @@
+<% provide(:title, "Address") %>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-3 col-md-3">
+         <% if current_user.admin? %>
+            <%= render 'layouts/admin' %> 
+        <%else%>
+            <%= render 'layouts/customer' %> 
+        <%end%>
+    </div>
+        <div class="row">
+      <div class="col-md-3">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">
+              Address
+            </h3>
+          </div>
+          <div class="panel-body" style="padding:10px" "border-right:1px solid #ccc">
+            <p><%=simple_format(@address.to_s)%></p>
+          </div>
+        </div>
+      </div>

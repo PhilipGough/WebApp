@@ -32,76 +32,70 @@
                                    </td>
                                </tr>
                                <tr>
-                            <td>
+                                <td>
 
-                            </td>
-                        </tr>
-                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h4 class="panel-title">
-                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo"><span class="glyphicon glyphicon-th">
-                    </span>Modules</a>
-                </h4>
-            </div>
-            <div id="collapseTwo" class="panel-collapse collapse">
-                <div class="panel-body">
-                    <table class="table">
-                        <tr>
-                            <td>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <a href="http://www.jquery2dotnet.com">Invoices</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <a href="http://www.jquery2dotnet.com">Shipments</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <a href="http://www.jquery2dotnet.com">Tex</a>
-                            </td>
-                        </tr>
-                    </table>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo"><span class="glyphicon glyphicon-th">
+                        </span>My Account</a>
+                    </h4>
+                </div>
+                <div id="collapseTwo" class="panel-collapse collapse">
+                    <div class="panel-body">
+                        <table class="table">
+                            <tr>
+                                <td>
+                                    <span class="glyphicon glyphicon-euro text-success"></span>
+                                    <%= link_to "View all orders", orders_path %>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <span class="glyphicon glyphicon-pushpin text-success"></span>
+                                    <%= link_to "My address book", addresses_path %>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h4 class="panel-title">
-                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree"><span class="glyphicon glyphicon-user">
-                    </span>Users</a>
-                </h4>
-            </div>
-            <div id="collapseThree" class="panel-collapse collapse">
-                <div class="panel-body">
-                    <table class="table">
-                        <tr>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree"><span class="glyphicon glyphicon-user">
+                        </span>Users</a>
+                    </h4>
+                </div>
+                <div id="collapseThree" class="panel-collapse collapse">
+                    <div class="panel-body">
+                        <table class="table">
+                         <tr>
                             <td>
-                                <li><%= link_to "View all users",   users_path %></li>
+                                <li><%= link_to "Profile",  current_user %></li>
                             </td>
                         </tr>
                         <tr>
                             <td>
-                                <a href="http://www.jquery2dotnet.com">Notifications</a> <span class="label label-info">5</span>
+                                <li><%= link_to "Profile Settings",   edit_user_path(current_user) %></li>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <%= link_to "Log out", signout_path, method: "delete" %>
                             </td>
                         </tr>
                         <tr>
                             <td>
-                                <a href="http://www.jquery2dotnet.com">Import/Export</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <span class="glyphicon glyphicon-trash text-danger"></span><a href="http://www.jquery2dotnet.com" class="text-danger">
-                                Delete Account</a>
+                                <span class="glyphicon glyphicon-trash text-danger"></span><%= link_to "Delete Account", current_user, method: :delete,
+                                data: { confirm: "Are you sure you want to delete your account, this change cannot be undone?" } %>
                             </td>
                         </tr>
                     </table>
